@@ -1,9 +1,6 @@
 name: Lambda deployment
 
 on:
-    push:
-        branches:
-           - aws-project
     workflow_dispatch:
 
 jobs:
@@ -13,6 +10,8 @@ jobs:
         steps:
           - name: Checkout code
             uses: actions/checkout@v5
+            with:
+                ref: aws-project
 
           - name: Configure AWS credentials
             uses: aws-actions/configure-aws-credentials@v5
