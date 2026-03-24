@@ -16,19 +16,19 @@ APP_DIR=/home/ec2-user/dice
 mkdir -p $APP_DIR
 
 # Clone your application repository (replace with your repo URL)
-git clone !!!Your clone URL here!!! $APP_DIR
-
-# Set the owner of the repo folder to be the user account that will ultimately run the app
-chown -R ec2-user:ec2-user $APP_DIR
+git clone https://github.com/saultcollege-csd215/aws-project-26w-James-Konieczny.git $APP_DIR
 
 cd $APP_DIR
 # Setup Python virtual environment and install dependencies
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r app/requirements_flask.txt
-pip install gunicorn
+pip install gunicorn # gunicorn is a fast server
 
 deactivate # Exit the Python virtual environment
+
+# Set the owner of the repo folder to be the user account that will ultimately run the app
+chown -R ec2-user:ec2-user $APP_DIR
 
 # --- Create systemd service ---
 cat <<EOF > /etc/systemd/system/diceapp.service

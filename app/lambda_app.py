@@ -14,7 +14,7 @@ def main(event, context):
     query = event.get('queryStringParameters', {}) or {}
     
     if path == '/hello':
-        return response(200, {"message": "Hello, World!"})
+        return response(200, {"message": "Hello, World! This was an automatic update."})
 
     if path == '/random':
         return response(200, {"random_number": core.rand100()})
